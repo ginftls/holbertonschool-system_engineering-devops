@@ -1,0 +1,111 @@
+Task 2: Secured and Monitored Web Infrastructure - Whiteboard Exercise
+This is a comprehensive whiteboard diagram for a secured and monitored three-server web infrastructure.
+
+![alt text](images/2-secured_and_monitored_web_infrastructure.png)
+
+
+Whiteboard Explanation - Secured and Monitored Infrastructure
+Additional Element Explanations:
+1. Why Add Firewalls?
+
+Block unauthorized access to servers
+Filter incoming and outgoing traffic
+Protect against common attacks (DDoS, port scanning)
+Create security zones (DMZ, internal network)
+Control which ports and protocols are allowed
+
+2. Why Add SSL Certificate?
+
+Encrypts data between user and server
+Verifies website authenticity
+Protects sensitive information (passwords, credit cards)
+Required for modern web standards
+Improves SEO ranking
+
+3. Why Serve Traffic Over HTTPS?
+
+Prevents eavesdropping on data transmission
+Ensures data integrity (no tampering)
+Authenticates the website's identity
+Builds user trust
+Required for many modern features (geolocation, PWA)
+
+4. Why Add Monitoring?
+
+Track system health and performance
+Early detection of issues
+Capacity planning
+Alert on failures or anomalies
+Historical data for troubleshooting
+
+5. How Monitoring Collects Data:
+
+Monitoring agents installed on each server
+Collect metrics (CPU, memory, disk, network)
+Parse logs (access logs, error logs)
+Custom application metrics
+Push data to central monitoring service
+Regular intervals (every 1-5 minutes)
+
+6. Monitoring Web Server QPS (Queries Per Second):
+
+Configure Nginx to log all requests
+Parse access logs for timestamp information
+Count requests per second
+Send metric to monitoring service
+Set up alerts for thresholds
+Create dashboards for visualization
+
+Infrastructure Issues:
+1. SSL Termination at Load Balancer:
+
+Problem: Traffic is decrypted at load balancer
+Issue: Traffic between LB and servers is unencrypted
+Risk: Internal network compromise exposes data
+Compliance: May violate security requirements
+Solution: End-to-end encryption or secure internal network
+
+2. Single MySQL Write Server:
+
+Problem: Only one server can accept writes
+Write Bottleneck: All writes go through primary
+SPOF: If primary fails, no writes possible
+Scalability: Cannot scale writes horizontally
+Solution: Multi-master setup or database sharding
+
+3. Same Components on All Servers:
+
+Resource Waste: Not all servers need all components
+Complex Scaling: Can't scale components independently
+Maintenance: Updates affect all services
+Better Approach: Microservices architecture
+
+Separate web servers
+Dedicated application servers
+Isolated database servers
+
+
+
+Security Improvements:
+
+External firewall protects against internet threats
+Internal firewalls (optional) segment the network
+HTTPS ensures encrypted communication
+Monitoring detects security incidents
+
+Monitoring Benefits:
+
+Real-time visibility into system health
+Historical data for trend analysis
+Automated alerts reduce downtime
+Performance optimization opportunities
+Capacity planning insights
+
+Key Metrics to Monitor:
+
+Web Server: QPS, response times, error rates
+Application: Memory usage, CPU, custom metrics
+Database: Query performance, connections, replication lag
+System: Disk space, network throughput, load average
+
+This secured and monitored infrastructure significantly improves security and observability compared to the previous design, though it still has architectural limitations that could be addressed in a more advanced setup.
