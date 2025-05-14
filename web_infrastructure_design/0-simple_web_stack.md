@@ -1,7 +1,7 @@
 Task 0: Simple Web Stack - Whiteboard Exercise
 This a comprehensive whiteboard diagram and explanation for a simple web stack infrastructure. 
 
-![alt text](task00.png)
+![alt text](images/0-simple_web_stack.png)
 
 
 Whiteboard Explanation - Simple Web Stack
